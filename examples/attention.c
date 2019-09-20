@@ -40,7 +40,7 @@ matrix network_loss_data(network *net, data test)
         float *delta = net->layers[net->n-1].output;
         for(b = 0; b < net->batch; ++b){
             if(i+b == test.X.rows) break;
-            int t = max_index(y + b*test.y.cols, 1000);
+            //int t = max_index(y + b*test.y.cols, 1000);
             float err = sum_array(delta + b*net->outputs, net->outputs);
             pred.vals[i+b][0] = -err;
             //pred.vals[i+b][0] = 1-delta[b*net->outputs + t];
@@ -176,7 +176,7 @@ void train_attention(char *datacfg, char *cfgfile, char *weightfile, int *gpus, 
         }
         free_data(best);
         printf("\n");
-        image im = float_to_image(64,64,3,resized.X.vals[0]);
+        //image im = float_to_image(64,64,3,resized.X.vals[0]);
         //show_image(im, "orig");
         //cvWaitKey(100);
         /*
